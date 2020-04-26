@@ -21,7 +21,10 @@ class ViewController: UIViewController {
     @IBAction func keyPressed(_ sender: UIButton) {
         sender.alpha = 0.5
         playSound(note: sender.currentTitle!)
-        _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { _ in sender.alpha = 1 }
+        // My solution
+        //_ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { _ in sender.alpha = 1 }
+        //Teacher's solution; no need to discard values
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { sender.alpha = 1 }
     }
     
     func playSound(note: String) {
